@@ -19,6 +19,8 @@ function populateTextareaField() {
     const savedFormData = JSON.parse(messageText);
     formRefs.input.value = savedFormData.email;
     formRefs.message.value = savedFormData.message;
+    formData.email = savedFormData.email;
+    formData.message = savedFormData.message;
   }
 }
 
@@ -33,7 +35,7 @@ formRefs.form.addEventListener('input', () => {
 });
 
 function handleSubmit(event) {
-  if (formData.email === '' || formData.message === '') {
+  if (formRefs.input.value === '' || formRefs.message.value === '') {
     alert('Fill please all fields');
   } else {
     localStorage.removeItem('feedback-form-state');
